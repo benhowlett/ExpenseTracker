@@ -5,13 +5,15 @@
 //  Created by Ben Howlett on 2023-01-29.
 //
 
-import Foundation
+import SwiftUI
 
 struct Expense {
+    let id = UUID()
     var amount: Float
     var name: String
     var description: String?
     var category: Category
+    var date: Date
 }
 
 // All possible expense or income categories should be defined here.

@@ -32,5 +32,7 @@ struct Category {
         case takeout = "takeoutbag.and.cup.and.straw"
         case restaurant = "fork.knife"
         case entertainment = "theatermasks"
+        case housing = "house"
+        case clothing = "tshirt"
     }
 }

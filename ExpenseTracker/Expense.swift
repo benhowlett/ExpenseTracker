@@ -20,6 +20,7 @@ struct Expense {
 // TODO: (Stretch Goal) Add ability for user to create new categories using whatever SF Symbol they want
 struct Category {
     let name: String
+    let color: UIColor
     let symbol: Symbol
     
     enum Symbol: String {

@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct ExpenseView: View {
+    @Environment(\.colorScheme) var colorScheme
     var expense: Expense
     let listDateFormatter = DateFormatter()
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 0.9)
-                .foregroundColor(.white)
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill((colorScheme == .light ? Color.white : Color.init(red: 0.07, green: 0.07, blue: 0.07)).shadow(.drop(color: .black, radius: 10, x: 7, y: 7)))
+                .frame(maxHeight: 80)
+                .padding()
             HStack {
                 Image(systemName: expense.category.symbol.rawValue)
                     .frame(width: 50, height: 50)
@@ -23,12 +26,12 @@ struct ExpenseView: View {
                     .font(.title)
                     .clipShape(Circle())
                     .padding()
-                VStack(){
+                VStack(alignment: .leading){
                     Text(expense.name)
-                        .font(.title2)
+                        .font(.title3)
                     Spacer()
                     Text(formatDateForListView())
-                        .font(.footnote)
+                        .font(.subheadline)
                         .foregroundColor(.primary.opacity(0.75))
                 }
                 .padding([.bottom, .top], 10)
@@ -36,11 +39,14 @@ struct ExpenseView: View {
                 Text(generateAmountString())
                     .padding()
                     .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(expense.amount >= 0 ? .green : .red)
             }
             .frame(maxHeight: 70)
-            .clipShape(RoundedRectangle(cornerRadius: 0.5))
-            .background(.gray.opacity(0.25))
+            .padding()
+
         }
+        
     }
     
     func formatDateForListView() -> String {
@@ -60,7 +66,7 @@ struct ExpenseView: View {
 struct ExpenseView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let expense = Expense(amount: 100, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date())
+        let expense = Expense(amount: 100.00, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date())
         
         ExpenseView(expense: expense)
     }

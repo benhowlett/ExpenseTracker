@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Expense {
     let id = UUID()
-    var amount: Float
+    var amount: Double
     var name: String
     var description: String?
     var category: Category

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ExpenseTrackerView: View {
     @ObservedObject var manager: ExpenseManager = ExpenseManager()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
             VStack {
                 Color(.systemIndigo)
                     .ignoresSafeArea(.all)
-                    .frame(height: 320, alignment: .top)
+                    .frame(height: 300, alignment: .top)
                 Spacer()
             }
             VStack {
@@ -63,8 +64,8 @@ struct ExpenseTrackerView: View {
                     }
                     .padding()
                 }
-                .padding()
-                .foregroundColor(.white)
+                .padding([.leading, .trailing])
+                .foregroundColor(colorScheme == .light ? .white : .black)
                 ScrollView {
                     LazyVStack {
                         ForEach(manager.expenses) { expense in

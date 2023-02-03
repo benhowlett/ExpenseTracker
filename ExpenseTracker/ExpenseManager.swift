@@ -45,7 +45,7 @@ class ExpenseManager: ObservableObject {
         var total: Double = 0
         for expense in expenses {
             if expense.amount < 0 {
-                total += expense.amount
+                total += expense.amount * -1
             }
         }
         return total
@@ -53,12 +53,16 @@ class ExpenseManager: ObservableObject {
     
     func getLatestEntryMonth() -> String {
         monthYearDateFormatter.dateFormat = "MMMM yyyy"
-        var latestDate = Date(timeIntervalSince1970: 0)
-        for expense in expenses {
-            if expense.date > latestDate {
-                latestDate = expense.date
+        if expenses.isEmpty {
+            return ""
+        } else {
+            var latestDate = Date(timeIntervalSince1970: 0)
+            for expense in expenses {
+                if expense.date > latestDate {
+                    latestDate = expense.date
+                }
             }
+            return monthYearDateFormatter.string(from: latestDate)
         }
-        return monthYearDateFormatter.string(from: latestDate)
     }
 }

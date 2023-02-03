@@ -1,5 +1,5 @@
 //
-//  ExpenseTrackerView.swift
+//  HomeView.swift
 //  ExpenseTracker
 //
 //  Created by Ben Howlett on 2023-02-03.
@@ -7,19 +7,25 @@
 
 import SwiftUI
 
-struct ExpenseTrackerView: View {
+struct HomeView: View {
     @ObservedObject var manager: ExpenseManager = ExpenseManager()
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
+            
+            // Background
             VStack {
                 Color(.systemIndigo)
                     .ignoresSafeArea(.all)
-                    .frame(height: 300, alignment: .top)
+                    .frame(height: 300)
                 Spacer()
             }
+            
+            // Content
             VStack {
+                
+                // Header content
                 VStack {
                     Text("Current Balance")
                         .textCase(.uppercase)
@@ -27,6 +33,7 @@ struct ExpenseTrackerView: View {
                         .padding([.bottom], 1)
                     Text("$" + manager.getCurrentBalance().commaRepresentation)
                         .font(.largeTitle)
+                        .fontWeight(.bold)
                         .padding([.bottom], 1)
                     Text(manager.getLatestEntryMonth())
                         .font(.subheadline)
@@ -36,7 +43,7 @@ struct ExpenseTrackerView: View {
                                 Image(systemName: "arrow.up.circle.fill")
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.background, .green)
-                                    .shadow(color: .black, radius: 3, x: 1, y: 1)
+                                    .shadow(color: .black, radius: 1, x: 1, y: 1)
                                     .font(.title3)
                                 Text("Income")
                                     .textCase(.uppercase)
@@ -52,14 +59,14 @@ struct ExpenseTrackerView: View {
                                 Image(systemName: "arrow.down.circle.fill")
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.background, .red)
-                                    .shadow(color: .black, radius: 3, x: 1, y: 1)
+                                    .shadow(color: .black, radius: 1, x: 1, y: 1)
                                     .font(.title3)
                                 Text("Expense")
                                     .textCase(.uppercase)
                             }
                             .font(.subheadline)
                             
-                            Text("$" + (manager.getExpense() * -1).commaRepresentation)
+                            Text("$" + manager.getExpense().commaRepresentation)
                                 .padding([.top], 2)
                         }
                         .padding()
@@ -67,7 +74,9 @@ struct ExpenseTrackerView: View {
                     .padding()
                 }
                 .padding([.leading, .trailing])
-                .foregroundColor(colorScheme == .light ? .white : .black)
+                .foregroundColor(colorScheme == .light ? .black : .white)
+                
+                // Expense content
                 ScrollView {
                     LazyVStack {
                         ForEach(manager.expenses) { expense in
@@ -90,6 +99,6 @@ struct ExpenseTrackerView_Previews: PreviewProvider {
         manager.addExpense(Expense(amount: 2023.99, name: "Long Test Expense 4", category: Category(name: "Takeout", color: .mint, symbol: .takeout), date: Date()))
         manager.addExpense(Expense(amount: 0, name: "Long Test Expense 5", category: Category(name: "Housing", color: .red, symbol: .housing), date: Date()))
         manager.addExpense(Expense(amount: -450.00, name: "Long Test Expense 6", category: Category(name: "Entertainment", color: .cyan, symbol: .entertainment), date: Date()))
-        return ExpenseTrackerView(manager: manager)
+        return HomeView(manager: manager)
     }
 }

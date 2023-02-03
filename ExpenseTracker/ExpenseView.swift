@@ -66,7 +66,7 @@ struct ExpenseView: View {
         if expense.amount >= 0 {
             return "+ $\(expense.amount)"
         } else {
-            return "- $\(expense.amount)"
+            return "- $\(expense.amount * -1)"
         }
     }
 }

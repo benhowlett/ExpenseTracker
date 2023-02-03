@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct ExpenseManager {
+class ExpenseManager: ObservableObject {
     private(set) var expenses: [Expense] = []
     
-    mutating func addExpense(_ expense: Expense) {
+    func addExpense(_ expense: Expense) {
         expenses.append(expense)
     }
 }

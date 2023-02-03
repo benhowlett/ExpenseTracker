@@ -8,15 +8,29 @@
 import SwiftUI
 
 struct ExpenseTrackerView: View {
-    @ObservedObject var manager = ExpenseManager()
+    @ObservedObject var manager: ExpenseManager = ExpenseManager()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            LazyVStack {
+                ForEach(manager.expenses) { expense in
+                    ExpenseView(expense)
+                }
+            }
+            .padding([.leading, .trailing])
+        }
     }
 }
 
 struct ExpenseTrackerView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpenseTrackerView()
+        let manager: ExpenseManager = ExpenseManager()
+        manager.addExpense(Expense(amount: 100.00, name: "Test Expense 1", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        manager.addExpense(Expense(amount: -123.45, name: "Test Expense 2", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        manager.addExpense(Expense(amount: 17.76, name: "Test Expense 3", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        manager.addExpense(Expense(amount: 2023.99, name: "Long Test Expense 4", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        manager.addExpense(Expense(amount: 1.00, name: "Long Test Expense 5", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        manager.addExpense(Expense(amount: 100.00, name: "Long Test Expense 6", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date()))
+        return ExpenseTrackerView(manager: manager)
     }
 }

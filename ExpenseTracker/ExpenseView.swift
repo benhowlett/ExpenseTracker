@@ -12,12 +12,16 @@ struct ExpenseView: View {
     var expense: Expense
     let listDateFormatter = DateFormatter()
     
+    init(_ expense: Expense) {
+        self.expense = expense
+    }
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill((colorScheme == .light ? Color.white : Color.init(red: 0.07, green: 0.07, blue: 0.07)).shadow(.drop(color: .black, radius: 10, x: 7, y: 7)))
                 .frame(maxHeight: 80)
-                .padding()
+//                .padding()
             HStack {
                 Image(systemName: expense.category.symbol.rawValue)
                     .frame(width: 50, height: 50)
@@ -25,7 +29,7 @@ struct ExpenseView: View {
                     .foregroundColor(expense.category.color)
                     .font(.title)
                     .clipShape(Circle())
-                    .padding()
+//                    .padding()
                 VStack(alignment: .leading){
                     Text(expense.name)
                         .font(.title3)
@@ -37,7 +41,7 @@ struct ExpenseView: View {
                 .padding([.bottom, .top], 10)
                 Spacer()
                 Text(generateAmountString())
-                    .padding()
+//                    .padding()
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(expense.amount >= 0 ? .green : .red)
@@ -72,6 +76,6 @@ struct ExpenseView_Previews: PreviewProvider {
     static var previews: some View {
         let expense = Expense(amount: 100.00, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date())
         
-        ExpenseView(expense: expense)
+        ExpenseView(expense)
     }
 }

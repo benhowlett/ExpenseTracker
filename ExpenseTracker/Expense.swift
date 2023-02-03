@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Expense {
+struct Expense: Identifiable {
     let id = UUID()
     var amount: Double
     var name: String

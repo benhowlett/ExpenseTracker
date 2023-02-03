@@ -64,9 +64,9 @@ struct ExpenseView: View {
     // Is there a better way to do this?
     func generateAmountString() -> String {
         if expense.amount >= 0 {
-            return "+ $\(expense.amount)"
+            return "+ $\(expense.amount.commaRepresentation)"
         } else {
-            return "- $\(expense.amount * -1)"
+            return "- $\((expense.amount * -1).commaRepresentation)"
         }
     }
 }

@@ -15,6 +15,7 @@
 		B578AFF3298ACAF900D81306 /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFF2298ACAF900D81306 /* ExpenseManager.swift */; };
 		B578AFF5298B132500D81306 /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFF4298B132400D81306 /* ExpenseViewController.swift */; };
 		B57967E6298D61080060E893 /* ExpenseTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57967E5298D61080060E893 /* ExpenseTrackerView.swift */; };
+		B594E1C0298D9D4D000F0669 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594E1BF298D9D4D000F0669 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B578AFF2298ACAF900D81306 /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
 		B578AFF4298B132400D81306 /* ExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
 		B57967E5298D61080060E893 /* ExpenseTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerView.swift; sourceTree = "<group>"; };
+		B594E1BF298D9D4D000F0669 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		B578AFE12986FA8500D81306 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B594E1C1298D9D5D000F0669 /* Utilities */,
 				B578AFE22986FA8500D81306 /* ExpenseTrackerApp.swift */,
 				B578AFF02986FB2700D81306 /* Expense.swift */,
 				B578AFF2298ACAF900D81306 /* ExpenseManager.swift */,
@@ -77,6 +80,14 @@
 				B578AFE92986FA8A00D81306 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B594E1C1298D9D5D000F0669 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B594E1BF298D9D4D000F0669 /* Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 				B578AFF5298B132500D81306 /* ExpenseViewController.swift in Sources */,
 				B578AFE52986FA8500D81306 /* ExpenseView.swift in Sources */,
 				B578AFE32986FA8500D81306 /* ExpenseTrackerApp.swift in Sources */,
+				B594E1C0298D9D4D000F0669 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

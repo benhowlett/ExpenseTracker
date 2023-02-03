@@ -25,7 +25,7 @@ struct ExpenseTrackerView: View {
                         .textCase(.uppercase)
                         .font(.subheadline)
                         .padding([.bottom], 1)
-                    Text("$" + String(format: "%.2f", manager.getCurrentBalance()))
+                    Text("$" + manager.getCurrentBalance().commaRepresentation)
                         .font(.largeTitle)
                         .padding([.bottom], 1)
                     Text(manager.getLatestEntryMonth())
@@ -36,12 +36,13 @@ struct ExpenseTrackerView: View {
                                 Image(systemName: "arrow.up.circle.fill")
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.background, .green)
-                                    .shadow(color: .black, radius: 5, x: 1, y: 1)
+                                    .shadow(color: .black, radius: 3, x: 1, y: 1)
+                                    .font(.title3)
                                 Text("Income")
                                     .textCase(.uppercase)
                             }
                             .font(.subheadline)
-                            Text("$" + String(format: "%.2f", manager.getIncome()))
+                            Text("$" + manager.getIncome().commaRepresentation)
                                 .padding([.top], 2)
                         }
                         .padding()
@@ -51,13 +52,14 @@ struct ExpenseTrackerView: View {
                                 Image(systemName: "arrow.down.circle.fill")
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.background, .red)
-                                    .shadow(color: .black, radius: 5, x: 1, y: 1)
+                                    .shadow(color: .black, radius: 3, x: 1, y: 1)
+                                    .font(.title3)
                                 Text("Expense")
                                     .textCase(.uppercase)
                             }
                             .font(.subheadline)
                             
-                            Text("$" + String(format: "%.2f", manager.getExpense() * -1))
+                            Text("$" + (manager.getExpense() * -1).commaRepresentation)
                                 .padding([.top], 2)
                         }
                         .padding()
@@ -86,8 +88,8 @@ struct ExpenseTrackerView_Previews: PreviewProvider {
         manager.addExpense(Expense(amount: -123.45, name: "Test Expense 2", category: Category(name: "Groceries", color: .green, symbol: .groceries), date: Date()))
         manager.addExpense(Expense(amount: 17.76, name: "Test Expense 3", category: Category(name: "Fuel", color: .orange, symbol: .fuel), date: Date()))
         manager.addExpense(Expense(amount: 2023.99, name: "Long Test Expense 4", category: Category(name: "Takeout", color: .mint, symbol: .takeout), date: Date()))
-        manager.addExpense(Expense(amount: 1.00, name: "Long Test Expense 5", category: Category(name: "Housing", color: .red, symbol: .housing), date: Date()))
-        manager.addExpense(Expense(amount: 100.00, name: "Long Test Expense 6", category: Category(name: "Entertainment", color: .cyan, symbol: .entertainment), date: Date()))
+        manager.addExpense(Expense(amount: 0, name: "Long Test Expense 5", category: Category(name: "Housing", color: .red, symbol: .housing), date: Date()))
+        manager.addExpense(Expense(amount: -450.00, name: "Long Test Expense 6", category: Category(name: "Entertainment", color: .cyan, symbol: .entertainment), date: Date()))
         return ExpenseTrackerView(manager: manager)
     }
 }

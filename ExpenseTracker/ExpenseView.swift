@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ExpenseView.swift
 //  ExpenseTracker
 //
 //  Created by Ben Howlett on 2023-01-29.
@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ExpenseView: View {
+    var expense: Expense
+    
     var body: some View {
+        
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
@@ -19,8 +22,11 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ExpenseView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ContentView()
+        let expense = Expense(amount: 100, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date())
+        
+        ExpenseView(expense: expense)
     }
 }

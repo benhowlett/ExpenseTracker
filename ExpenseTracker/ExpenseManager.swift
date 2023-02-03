@@ -8,7 +8,7 @@
 import Foundation
 
 struct ExpenseManager {
-    private(set) var expenses: [Expense]
+    private(set) var expenses: [Expense] = []
     
     mutating func addExpense(_ expense: Expense) {
         expenses.append(expense)

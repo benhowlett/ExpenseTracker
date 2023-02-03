@@ -9,16 +9,51 @@ import SwiftUI
 
 struct ExpenseView: View {
     var expense: Expense
+    let listDateFormatter = DateFormatter()
     
     var body: some View {
-        
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            RoundedRectangle(cornerRadius: 0.9)
+                .foregroundColor(.white)
+            HStack {
+                Image(systemName: expense.category.symbol.rawValue)
+                    .frame(width: 50, height: 50)
+                    .background(expense.category.color.opacity(0.5))
+                    .foregroundColor(expense.category.color)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding()
+                VStack(){
+                    Text(expense.name)
+                        .font(.title2)
+                    Spacer()
+                    Text(formatDateForListView())
+                        .font(.footnote)
+                        .foregroundColor(.primary.opacity(0.75))
+                }
+                .padding([.bottom, .top], 10)
+                Spacer()
+                Text(generateAmountString())
+                    .padding()
+                    .font(.title2)
+            }
+            .frame(maxHeight: 70)
+            .clipShape(RoundedRectangle(cornerRadius: 0.5))
+            .background(.gray.opacity(0.25))
         }
-        .padding()
+    }
+    
+    func formatDateForListView() -> String {
+        listDateFormatter.dateFormat = "MMM dd 'at' h:mma"
+        return listDateFormatter.string(from: expense.date)
+    }
+    
+    func generateAmountString() -> String {
+        if expense.amount >= 0 {
+            return "+ $\(expense.amount)"
+        } else {
+            return "- $\(expense.amount)"
+        }
     }
 }
 

@@ -24,7 +24,7 @@ struct ExpenseView: View {
 //                .padding()
             HStack {
                 Image(systemName: expense.category.symbol.rawValue)
-                    .frame(width: 50, height: 50)
+                    .frame(width: 55, height: 55)
                     .background(expense.category.color.opacity(0.5))
                     .foregroundColor(expense.category.color)
                     .font(.title)

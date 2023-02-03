@@ -9,7 +9,7 @@ import Foundation
 
 class ExpenseManager: ObservableObject {
     private(set) var expenses: [Expense] = []
-    
+        
     func addExpense(_ expense: Expense) {
         expenses.append(expense)
     }
@@ -20,5 +20,33 @@ class ExpenseManager: ObservableObject {
                 expenses.remove(at: index)
             }
         }
+    }
+    
+    func getCurrentBalance() -> Double {
+        var total: Double = 0
+        for expense in expenses {
+            total += expense.amount
+        }
+        return total
+    }
+    
+    func getIncome() -> Double {
+        var total: Double = 0
+        for expense in expenses {
+            if expense.amount >= 0 {
+                total += expense.amount
+            }
+        }
+        return total
+    }
+    
+    func getExpense() -> Double {
+        var total: Double = 0
+        for expense in expenses {
+            if expense.amount < 0 {
+                total += expense.amount
+            }
+        }
+        return total
     }
 }

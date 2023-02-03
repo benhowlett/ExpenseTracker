@@ -11,13 +11,69 @@ struct ExpenseTrackerView: View {
     @ObservedObject var manager: ExpenseManager = ExpenseManager()
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(manager.expenses) { expense in
-                    ExpenseView(expense)
+        ZStack {
+            VStack {
+                Color(.systemIndigo)
+                    .ignoresSafeArea(.all)
+                    .frame(height: 320, alignment: .top)
+                Spacer()
+            }
+            VStack {
+                VStack {
+                    Text("Current Balance")
+                        .textCase(.uppercase)
+                        .font(.subheadline)
+                        .padding([.bottom], 1)
+                    Text("$" + String(format: "%.2f", manager.getCurrentBalance()))
+                        .font(.largeTitle)
+                        .padding([.bottom], 1)
+                    Text(manager.getLatestEntryMonth())
+                        .font(.subheadline)
+                    HStack {
+                        VStack{
+                            HStack {
+                                Image(systemName: "arrow.up.circle.fill")
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(.background, .green)
+                                    .shadow(color: .black, radius: 5, x: 1, y: 1)
+                                Text("Income")
+                                    .textCase(.uppercase)
+                            }
+                            .font(.subheadline)
+                            Text("$" + String(format: "%.2f", manager.getIncome()))
+                                .padding([.top], 2)
+                        }
+                        .padding()
+                        Spacer()
+                        VStack{
+                            HStack {
+                                Image(systemName: "arrow.down.circle.fill")
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(.background, .red)
+                                    .shadow(color: .black, radius: 5, x: 1, y: 1)
+                                Text("Expense")
+                                    .textCase(.uppercase)
+                            }
+                            .font(.subheadline)
+                            
+                            Text("$" + String(format: "%.2f", manager.getExpense() * -1))
+                                .padding([.top], 2)
+                        }
+                        .padding()
+                    }
+                    .padding()
+                }
+                .padding()
+                .foregroundColor(.white)
+                ScrollView {
+                    LazyVStack {
+                        ForEach(manager.expenses) { expense in
+                            ExpenseView(expense)
+                        }
+                    }
+                    .padding([.leading, .trailing])
                 }
             }
-            .padding([.leading, .trailing])
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 class ExpenseManager: ObservableObject {
     private(set) var expenses: [Expense] = []
+    let monthYearDateFormatter = DateFormatter()
         
     func addExpense(_ expense: Expense) {
         expenses.append(expense)
@@ -48,5 +49,16 @@ class ExpenseManager: ObservableObject {
             }
         }
         return total
+    }
+    
+    func getLatestEntryMonth() -> String {
+        monthYearDateFormatter.dateFormat = "MMMM yyyy"
+        var latestDate = Date(timeIntervalSince1970: 0)
+        for expense in expenses {
+            if expense.date > latestDate {
+                latestDate = expense.date
+            }
+        }
+        return monthYearDateFormatter.string(from: latestDate)
     }
 }

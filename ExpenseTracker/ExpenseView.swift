@@ -49,11 +49,15 @@ struct ExpenseView: View {
         
     }
     
+    // Format the date that shows below the expense name in the view.
+    // Adjust the format below to change how the date and time are shown
     func formatDateForListView() -> String {
         listDateFormatter.dateFormat = "MMM dd 'at' h:mma"
         return listDateFormatter.string(from: expense.date)
     }
     
+    // Handle adding a "+" or "-" before the amount in the view as appropriate
+    // Is there a better way to do this?
     func generateAmountString() -> String {
         if expense.amount >= 0 {
             return "+ $\(expense.amount)"

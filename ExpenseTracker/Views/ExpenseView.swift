@@ -74,7 +74,7 @@ struct ExpenseView: View {
 struct ExpenseView_Previews: PreviewProvider {
     
     static var previews: some View {
-        let expense = Expense(amount: 100.00, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .travel), date: Date())
+        let expense = Expense(amount: 100.00, name: "Test Expense", category: Category(name: "Travel", color: .blue, symbol: .airplane), date: Date())
         
         ExpenseView(expense)
     }

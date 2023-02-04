@@ -36,16 +36,13 @@ struct MainView: View {
                     .tag(4)
             }
             .accentColor(.indigo)
-            .onChange(of: selectedTab) {value in
-                print("selected tab = \(value)")
-            }
+//            .onChange(of: selectedTab) {value in
+//                print("selected tab = \(value)")
+//            }
             VStack {
                 Spacer()
                 Button(action: {
-                    print("Button tapped")
-                    if selectedTab == 1 {
-                        print("selected tab 1")
-                    }
+                    print("Selected tab = \(selectedTab)")
                 }, label: {
                     Image(systemName: "plus.app.fill")
                         .font(.custom("Button", size: 64))

@@ -10,6 +10,17 @@ import Foundation
 class ExpenseManager: ObservableObject {
     private(set) var expenses: [Expense] = []
     let monthYearDateFormatter = DateFormatter()
+    
+    // Define the initial set of default categories here. This will be user editable.
+    private(set) var categories = [
+        Category(name: "Salary", color: .green, symbol: .dollar),
+        Category(name: "Housing", color: .yellow, symbol: .house),
+        Category(name: "Groceries", color: .blue, symbol: .carrot),
+        Category(name: "Fuel", color: .orange, symbol: .fuel),
+        Category(name: "Travel", color: .mint, symbol: .airplane),
+        Category(name: "Restaurant", color: .indigo, symbol: .restaurant)
+        Category(name: "Takeout", color: .cyan, symbol: .takeout)
+    ]
         
     func addExpense(_ expense: Expense) {
         expenses.append(expense)

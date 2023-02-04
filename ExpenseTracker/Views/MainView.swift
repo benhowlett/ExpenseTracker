@@ -8,32 +8,44 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var selectedTab = 1
+    
     var body: some View {
         ZStack {
-            TabView {
+            TabView(selection: $selectedTab) {
                 HomeView()
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
+                    .tag(1)
                 CategoryView()
                     .tabItem {
                         Label("Category", systemImage: "square.grid.2x2")
                     }
+                    .tag(2)
                 Spacer()
                 ChartView()
                     .tabItem {
                         Label("Chart", systemImage: "chart.pie")
                     }
+                    .tag(3)
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gear")
                     }
+                    .tag(4)
             }
             .accentColor(.indigo)
+            .onChange(of: selectedTab) {value in
+                print("selected tab = \(value)")
+            }
             VStack {
                 Spacer()
                 Button(action: {
-                    
+                    print("Button tapped")
+                    if selectedTab == 1 {
+                        print("selected tab 1")
+                    }
                 }, label: {
                     Image(systemName: "plus.app.fill")
                         .font(.custom("Button", size: 64))

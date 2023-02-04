@@ -12,7 +12,7 @@ struct ExpenseTrackerApp: App {
     var body: some Scene {
         
         WindowGroup {
-            HomeView(manager: ExpenseManager())
+            MainView()
         }
     }
 }

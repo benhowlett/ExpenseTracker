@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51ED00A29958DC900754E25 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51ED00929958DC900754E25 /* MainViewController.swift */; };
+		B51ED00C29958E4B00754E25 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51ED00B29958E4B00754E25 /* Preferences.swift */; };
 		B578AFE32986FA8500D81306 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFE22986FA8500D81306 /* ExpenseTrackerApp.swift */; };
 		B578AFE52986FA8500D81306 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFE42986FA8500D81306 /* ExpenseView.swift */; };
 		B578AFE72986FA8A00D81306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B578AFE62986FA8A00D81306 /* Assets.xcassets */; };
 		B578AFEA2986FA8A00D81306 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B578AFE92986FA8A00D81306 /* Preview Assets.xcassets */; };
 		B578AFF12986FB2700D81306 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFF02986FB2700D81306 /* Expense.swift */; };
-		B578AFF3298ACAF900D81306 /* ExpenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFF2298ACAF900D81306 /* ExpenseManager.swift */; };
+		B578AFF3298ACAF900D81306 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578AFF2298ACAF900D81306 /* HomeViewController.swift */; };
 		B57967E6298D61080060E893 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57967E5298D61080060E893 /* HomeView.swift */; };
 		B594E1C0298D9D4D000F0669 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594E1BF298D9D4D000F0669 /* Extensions.swift */; };
 		B594E1C4298DC2D5000F0669 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594E1C3298DC2D5000F0669 /* CategoryView.swift */; };
@@ -22,13 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B51ED00929958DC900754E25 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B51ED00B29958E4B00754E25 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		B578AFDF2986FA8500D81306 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B578AFE22986FA8500D81306 /* ExpenseTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApp.swift; sourceTree = "<group>"; };
 		B578AFE42986FA8500D81306 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
 		B578AFE62986FA8A00D81306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B578AFE92986FA8A00D81306 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B578AFF02986FB2700D81306 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
-		B578AFF2298ACAF900D81306 /* ExpenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseManager.swift; sourceTree = "<group>"; };
+		B578AFF2298ACAF900D81306 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B57967E5298D61080060E893 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B594E1BF298D9D4D000F0669 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B594E1C3298DC2D5000F0669 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -48,6 +52,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51ED00729958D6200754E25 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B578AFF2298ACAF900D81306 /* HomeViewController.swift */,
+				B51ED00929958DC900754E25 /* MainViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B51ED00829958D7800754E25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B578AFF02986FB2700D81306 /* Expense.swift */,
+				B51ED00B29958E4B00754E25 /* Preferences.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B578AFD62986FA8500D81306 = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +89,11 @@
 		B578AFE12986FA8500D81306 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B51ED00829958D7800754E25 /* Models */,
 				B594E1C2298DC050000F0669 /* Views */,
+				B51ED00729958D6200754E25 /* View Controllers */,
 				B594E1C1298D9D5D000F0669 /* Utilities */,
 				B578AFE22986FA8500D81306 /* ExpenseTrackerApp.swift */,
-				B578AFF02986FB2700D81306 /* Expense.swift */,
-				B578AFF2298ACAF900D81306 /* ExpenseManager.swift */,
 				B578AFE62986FA8A00D81306 /* Assets.xcassets */,
 				B578AFE82986FA8A00D81306 /* Preview Content */,
 			);
@@ -178,8 +200,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B578AFF12986FB2700D81306 /* Expense.swift in Sources */,
+				B51ED00A29958DC900754E25 /* MainViewController.swift in Sources */,
+				B51ED00C29958E4B00754E25 /* Preferences.swift in Sources */,
 				B594E1C4298DC2D5000F0669 /* CategoryView.swift in Sources */,
-				B578AFF3298ACAF900D81306 /* ExpenseManager.swift in Sources */,
+				B578AFF3298ACAF900D81306 /* HomeViewController.swift in Sources */,
 				B594E1CA298DC309000F0669 /* MainView.swift in Sources */,
 				B594E1C8298DC2F1000F0669 /* SettingsView.swift in Sources */,
 				B57967E6298D61080060E893 /* HomeView.swift in Sources */,

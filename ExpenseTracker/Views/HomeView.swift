@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var manager: ExpenseManager = ExpenseManager()
+    @ObservedObject var manager: HomeViewController
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -92,7 +92,7 @@ struct HomeView: View {
 
 struct ExpenseTrackerView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager: ExpenseManager = ExpenseManager()
+        let manager: HomeViewController = HomeViewController()
         manager.addExpense(Expense(amount: 100.00, name: "Test Expense 1", category: Category(name: "Travel", color: .blue, symbol: .airplane), date: Date()))
         manager.addExpense(Expense(amount: -123.45, name: "Test Expense 2", category: Category(name: "Groceries", color: .green, symbol: .carrot), date: Date()))
         manager.addExpense(Expense(amount: 17.76, name: "Test Expense 3", category: Category(name: "Fuel", color: .orange, symbol: .fuel), date: Date()))

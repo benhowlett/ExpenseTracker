@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExpenseManager: ObservableObject {
+class HomeViewController: ObservableObject {
     private(set) var expenses: [Expense] = []
     let monthYearDateFormatter = DateFormatter()
     
@@ -18,7 +18,7 @@ class ExpenseManager: ObservableObject {
         Category(name: "Groceries", color: .blue, symbol: .carrot),
         Category(name: "Fuel", color: .orange, symbol: .fuel),
         Category(name: "Travel", color: .mint, symbol: .airplane),
-        Category(name: "Restaurant", color: .indigo, symbol: .restaurant)
+        Category(name: "Restaurant", color: .indigo, symbol: .restaurant),
         Category(name: "Takeout", color: .cyan, symbol: .takeout)
     ]
         
@@ -75,5 +75,15 @@ class ExpenseManager: ObservableObject {
             }
             return monthYearDateFormatter.string(from: latestDate)
         }
+    }
+    
+    func getUsedCategories() -> [Category] {
+        var categories: [Category] = []
+        for expense in expenses {
+            if !categories.contains(expense.category) {
+                categories.append(expense.category)
+            }
+        }
+        return categories
     }
 }

@@ -20,7 +20,8 @@ struct Expense: Identifiable {
 //
 // TODO: Add all initial category symbols
 // TODO: (Stretch Goal) Add ability for user to create new categories using whatever SF Symbol they want
-struct Category {
+struct Category: Equatable {
+    let id = UUID()
     let name: String
     let color: Color
     let symbol: Symbol

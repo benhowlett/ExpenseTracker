@@ -14,7 +14,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                HomeView(manager: mainViewController.homeViewController)
+                HomeView(homeViewController: mainViewController.homeViewController)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

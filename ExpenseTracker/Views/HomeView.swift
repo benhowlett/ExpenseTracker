@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var manager: HomeViewController
+    @ObservedObject var homeViewController: HomeViewController
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -31,11 +31,11 @@ struct HomeView: View {
                         .textCase(.uppercase)
                         .font(.subheadline)
                         .padding([.bottom], 1)
-                    Text("$" + manager.getCurrentBalance().commaRepresentation)
+                    Text("$" + homeViewController.getCurrentBalance().commaRepresentation)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding([.bottom], 1)
-                    Text(manager.getLatestEntryMonth())
+                    Text(homeViewController.getLatestEntryMonth())
                         .font(.subheadline)
                     HStack {
                         VStack{
@@ -49,7 +49,7 @@ struct HomeView: View {
                                     .textCase(.uppercase)
                             }
                             .font(.subheadline)
-                            Text("$" + manager.getIncome().commaRepresentation)
+                            Text("$" + homeViewController.getIncome().commaRepresentation)
                                 .padding([.top], 2)
                         }
                         .padding()
@@ -66,7 +66,7 @@ struct HomeView: View {
                             }
                             .font(.subheadline)
                             
-                            Text("$" + manager.getExpense().commaRepresentation)
+                            Text("$" + homeViewController.getExpense().commaRepresentation)
                                 .padding([.top], 2)
                         }
                         .padding()
@@ -79,7 +79,7 @@ struct HomeView: View {
                 // Expense content
                 ScrollView {
                     LazyVStack {
-                        ForEach(manager.expenses) { expense in
+                        ForEach(homeViewController.expenses) { expense in
                             ExpenseView(expense)
                         }
                     }
@@ -92,13 +92,13 @@ struct HomeView: View {
 
 struct ExpenseTrackerView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager: HomeViewController = HomeViewController()
-        manager.addExpense(Expense(amount: 100.00, name: "Test Expense 1", category: Category(name: "Travel", color: .blue, symbol: .airplane), date: Date()))
-        manager.addExpense(Expense(amount: -123.45, name: "Test Expense 2", category: Category(name: "Groceries", color: .green, symbol: .carrot), date: Date()))
-        manager.addExpense(Expense(amount: 17.76, name: "Test Expense 3", category: Category(name: "Fuel", color: .orange, symbol: .fuel), date: Date()))
-        manager.addExpense(Expense(amount: 2023.99, name: "Long Test Expense 4", category: Category(name: "Takeout", color: .mint, symbol: .takeout), date: Date()))
-        manager.addExpense(Expense(amount: 0, name: "Long Test Expense 5", category: Category(name: "Housing", color: .red, symbol: .house), date: Date()))
-        manager.addExpense(Expense(amount: -450.00, name: "Long Test Expense 6", category: Category(name: "Entertainment", color: .cyan, symbol: .theater), date: Date()))
-        return HomeView(manager: manager)
+        let homeViewController: HomeViewController = HomeViewController()
+        homeViewController.addExpense(Expense(amount: 100.00, name: "Test Expense 1", category: Category(name: "Travel", color: .blue, symbol: .airplane), date: Date()))
+        homeViewController.addExpense(Expense(amount: -123.45, name: "Test Expense 2", category: Category(name: "Groceries", color: .green, symbol: .carrot), date: Date()))
+        homeViewController.addExpense(Expense(amount: 17.76, name: "Test Expense 3", category: Category(name: "Fuel", color: .orange, symbol: .fuel), date: Date()))
+        homeViewController.addExpense(Expense(amount: 2023.99, name: "Long Test Expense 4", category: Category(name: "Takeout", color: .mint, symbol: .takeout), date: Date()))
+        homeViewController.addExpense(Expense(amount: 0, name: "Long Test Expense 5", category: Category(name: "Housing", color: .red, symbol: .house), date: Date()))
+        homeViewController.addExpense(Expense(amount: -450.00, name: "Long Test Expense 6", category: Category(name: "Entertainment", color: .cyan, symbol: .theater), date: Date()))
+        return HomeView(homeViewController: homeViewController)
     }
 }
